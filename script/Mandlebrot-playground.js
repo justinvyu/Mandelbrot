@@ -56,7 +56,7 @@ var app = playground({
 
 	// Playground Functions
 
-	step: function(delta) {c
+	step: function(delta) {
 		if(this.draw) {
 			this.a += 0.05;
 			if(this.a >= 2) {
