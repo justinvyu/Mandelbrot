@@ -13,6 +13,7 @@ var app = playground({
 	b: -2,
 	temp: 0,
 	draw: true,
+	iterateCount: 0,
 
 	// Numberphile
 	// fc(z) = z^2 + c
@@ -33,19 +34,18 @@ var app = playground({
 		this.x = this.temp;
 	},
 
-	drawAB: function() {
+	paint: function() {
 		this.layer
-			.fillStyle("#000")
-			.stroke()
-			.circle(200+this.a*100, 200-this.b*100, 2)
-			.fill()
-			.save();
+			.fillStyle("#0FF")
+			.rect(200+this.a*100, 200-this.b*100, 2, 2)
+			.fill();
 	},
 
 	doesSetBlowUp: function(times) {
 		for(var i = 0; i < times; i++) {
 			this.iterate();
 
+			this.iterateCount++;
 			if(this.x * this.x + this.y * this.y > 4.) {
 				return true;
 			}
@@ -58,18 +58,21 @@ var app = playground({
 
 	step: function(delta) {
 		if(this.draw) {
-			this.a += 0.05;
-			if(this.a >= 2) {
-				this.a = -2;
-				this.b += 0.05;
+			for(var i = 0; i < 50; i++) {
+				this.a += 0.04;
+				if(this.a >= 2) {
+					this.a = -2;
+					this.b += 0.04;
+				}
+				if(this.b >= 2) {
+					this.draw = false;
+				}
+				this.x = 0;
+				this.y = 0;
+				if(this.doesSetBlowUp(50))
+					this.paint();
+				this.iterateCount = 0;
 			}
-			if(this.b >= 2) {
-				this.draw = false;
-			}
-			this.x = 0;
-			this.y = 0;
-			if(this.doesSetBlowUp(50))
-				this.drawAB();
 		}
 	},
 
@@ -78,7 +81,7 @@ var app = playground({
 		//this.printCoordinate();
 
 		// Start iterations / drawing
-		this.drawAB();
+		this.paint();
 	}
 
 });
