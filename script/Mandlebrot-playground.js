@@ -1,7 +1,3 @@
-/*
-	REALLY SLOW ;( 
-	thanks playground
-*/
 
 var app = playground({
 	width: 580,
