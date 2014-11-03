@@ -1,6 +1,5 @@
 /*
-	REALLY SLOW ;( 
-	thanks playground
+	LESS SLOW
 */
 
 var app = playground({
