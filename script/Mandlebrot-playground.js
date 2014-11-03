@@ -1,5 +1,6 @@
 /*
-	LESS SLOW
+	REALLY SLOW ;( 
+	thanks playground
 */
 
 var app = playground({
@@ -58,17 +59,17 @@ var app = playground({
 	step: function(delta) {
 		if(this.draw) {
 			for(var i = 0; i < 50; i++) {
-				this.a += 0.04;
+				this.a += 0.03;
 				if(this.a >= 2) {
 					this.a = -2;
-					this.b += 0.04;
+					this.b += 0.03;
 				}
 				if(this.b >= 2) {
 					this.draw = false;
 				}
 				this.x = 0;
 				this.y = 0;
-				if(this.doesSetBlowUp(50))
+				if(this.doesSetBlowUp(100))
 					this.paint();
 				this.iterateCount = 0;
 			}
