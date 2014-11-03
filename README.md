@@ -9,7 +9,7 @@ Creating a visual of the Mandlebrot set using playground.js/canvasquery.js
 ![myMandlebrot](https://camo.githubusercontent.com/9d729a9fa917ac611da80aceae1ec117447cfaa3/687474703a2f2f692e696d6775722e636f6d2f524957777670772e706e673f31 "Mandlebrot Set")
 
 ... and now after 5 seconds
-![myMandlebrotv2](https://camo.githubusercontent.com/9d729a9fa917ac611da80aceae1ec117447cfaa3/687474703a2f2f692e696d6775722e636f6d2f524957777670772e706e673f31 "Mandlebrot Set v2")
+![myMandlebrotv2](https://camo.githubusercontent.com/71144b752ef21fb99c7d37b2288f09b6f7596057/687474703a2f2f692e696d6775722e636f6d2f544435504137562e706e673f31"Mandlebrot Set v2")
 
 To do:
   - Make it have different colors based on how long it takes to "blow up"
