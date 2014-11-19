@@ -16,17 +16,17 @@ canvas,
 ctx;
 
 // Numberphile
-	// fc(z) = z^2 + c
-	// z = x + yi
-	// c = a + bi
-	/*
-	fc(z) = (x+yi)(x+yi) + (a+bi)
-	fc(z) = x * x + 2xyi - (y * y) + a + bi
-	fc(z) = (x * x - [y * y] + a) + (2xy + b)i
+// fc(z) = z^2 + c
+// z = x + yi
+// c = a + bi
+/*
+fc(z) = (x+yi)(x+yi) + (a+bi)
+fc(z) = x * x + 2xyi - (y * y) + a + bi
+fc(z) = (x * x - [y * y] + a) + (2xy + b)i
 
-	real = x * x - y * y + a
-	imaginary = 2 * x * y + b
-	*/
+real = x * x - y * y + a
+imaginary = 2 * x * y + b
+*/
 
 function iterate() {
 	temp = x * x - y * y + a;
