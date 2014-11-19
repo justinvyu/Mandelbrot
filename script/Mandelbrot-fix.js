@@ -1,3 +1,4 @@
+
 /*
 Goodbye playground.js
 It was nice knowing you...
@@ -51,7 +52,7 @@ function doesSetBlowUp(times) {
 function drawPoints(pointsArray, color) {
 	for(var i = 0; i < pointsArray.length; i++) {
 		ctx.fillStyle = color;
-		ctx.fillRect(200+pointsArray[i][0]*100, 200-pointsArray[i][1]*100, 1, 1);
+		ctx.fillRect(500+pointsArray[i][0]*300, 500-pointsArray[i][1]*300, 1, 1);
 		console.log(i);
 	}
 }
@@ -60,8 +61,8 @@ function drawPoints(pointsArray, color) {
 function canvas () {
 	canvas = document.createElement("canvas");
 	ctx = canvas.getContext("2d");
-	canvas.height = 580;
-	canvas.width = 580;
+	canvas.height = 1000;
+	canvas.width = 1000;
 	document.body.appendChild(canvas);
 }
 
@@ -92,6 +93,4 @@ function main(inc, accuracy, color) { // inc = increment, color = string color
 	}
 }
 
-main(0.008, 300, "black");
-
-main();
+main(0.005, 200, "black");
