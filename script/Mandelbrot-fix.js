@@ -34,6 +34,7 @@ function iterate() {
 	x = temp;
 }
 
+// Checks if the set blows up under x amount of times
 function doesSetBlowUp(times) {
 	for(var i = 0; i < times; i++) {
 		iterate();
@@ -46,14 +47,16 @@ function doesSetBlowUp(times) {
 	return false;
 }
 
-function drawPoints(pointsArray) {
+// Draws all points in the points array
+function drawPoints(pointsArray, color) {
 	for(var i = 0; i < pointsArray.length; i++) {
-		ctx.fillStyle = "black";
+		ctx.fillStyle = color;
 		ctx.fillRect(200+pointsArray[i][0]*100, 200-pointsArray[i][1]*100, 1, 1);
 		console.log(i);
 	}
 }
 
+// Canvas stuff
 function canvas () {
 	canvas = document.createElement("canvas");
 	ctx = canvas.getContext("2d");
@@ -62,31 +65,33 @@ function canvas () {
 	document.body.appendChild(canvas);
 }
 
-function main() {
+function main(inc, accuracy, color) { // inc = increment, color = string color
 
 	canvas();
 
 	while(draw) {
-		a += 0.01;
+		a += inc;
 		if(a >= 2) {
 			a = -2;
-			b += 0.01;
+			b += inc;
 		}
 		if(b >= 2) {
 			draw = false;
 			//console.log("a: " + a + "  " + "b: " + b);
 			//console.log("Done");
-			console.log(pointsArray);
+			//console.log(pointsArray);
 
-			drawPoints(pointsArray);
+			drawPoints(pointsArray, color);
 		}
 		x = 0;
 		y = 0;
-		if(doesSetBlowUp(100)) {
+		if(doesSetBlowUp(accuracy)) {
 			// add point to array
 			pointsArray.push([a, b, iterateCount]);
 		}
 	}
 }
+
+main(0.008, 300, "black");
 
 main();
