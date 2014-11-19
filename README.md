@@ -1,7 +1,11 @@
 Mandelbrot
 ==========
 
-Creating a visual of the Mandlebrot set using playground.js/canvasquery.js
+First attempts:
+Creating a visual of the Mandelbrot set using playground.js/canvasquery.js
+
+Currently:
+Creating a visual of the Mandelbrot Set using js.
 
 11/19 commits:
 - added an array that contained all of the "blow up" points
