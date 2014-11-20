@@ -4,17 +4,18 @@ Goodbye playground.js
 It was nice knowing you...
 */
 
-var 
-a = -2, 
-b = -2, 
-x = 0, 
-y = 0, 
-temp = 0, 
+var
+a = -2,
+b = -2,
+x = 0,
+y = 0,
+temp = 0,
 iterateCount = 0,
 draw = true,
 pointsArray = [],
 canvas,
-ctx;
+ctx,
+colorPercent;
 
 // Numberphile
 // fc(z) = z^2 + c
@@ -28,6 +29,14 @@ fc(z) = (x * x - [y * y] + a) + (2xy + b)i
 real = x * x - y * y + a
 imaginary = 2 * x * y + b
 */
+
+// Color
+function rgb(r, g, b){
+	r = Math.floor(r);
+	g = Math.floor(g);
+	b = Math.floor(b);
+	return ["rgb(",r,",",g,",",b,")"].join("");
+}
 
 function iterate() {
 	temp = x * x - y * y + a;
@@ -49,11 +58,23 @@ function doesSetBlowUp(times) {
 }
 
 // Draws all points in the points array
-function drawPoints(pointsArray, color) {
+function drawPoints(pointsArray, highlightAccuracy) {
+
 	for(var i = 0; i < pointsArray.length; i++) {
-		ctx.fillStyle = color;
-		ctx.fillRect(500+pointsArray[i][0]*300, 500-pointsArray[i][1]*300, 1, 1);
-		console.log(i);
+		//var colorPercent = pointsArray[i][2] % 255; // find percent
+		//ctx.fillStyle = lighten(color, colorPercent);
+		/*
+		if(pointsArray[i][2] < 2) {
+			colorPercent = 0;
+		} else {
+			colorPercent = pointsArray[i][2] + highlightAccuracy;
+		}
+		*/
+		colorPercent = pointsArray[i][2] + highlightAccuracy;
+		//console.log(pointsArray[i][2], colorPercent);
+
+		ctx.fillStyle = rgb(colorPercent, colorPercent, colorPercent);
+		ctx.fillRect(500+pointsArray[i][0]*300, 500-pointsArray[i][1]*300, 2, 2);
 	}
 }
 
@@ -66,7 +87,7 @@ function canvas () {
 	document.body.appendChild(canvas);
 }
 
-function main(inc, accuracy, color) { // inc = increment, color = string color
+function main(inc, accuracy, highlightAccuracy) { // inc = increment, color = string color
 
 	canvas();
 
@@ -82,15 +103,16 @@ function main(inc, accuracy, color) { // inc = increment, color = string color
 			//console.log("Done");
 			//console.log(pointsArray);
 
-			drawPoints(pointsArray, color);
+			drawPoints(pointsArray, highlightAccuracy);
 		}
 		x = 0;
 		y = 0;
 		if(doesSetBlowUp(accuracy)) {
 			// add point to array
 			pointsArray.push([a, b, iterateCount]);
+			iterateCount = 0;
 		}
 	}
 }
 
-main(0.005, 200, "black");
+main(0.005, 255, 20);
